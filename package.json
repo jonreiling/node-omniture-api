@@ -1,5 +1,5 @@
 {
-  "name": "Node-Omniture-API",
+  "name": "node-omniture-api",
   "version": "0.1.0",
   "description": "An extremely simple library for making calls to api.omniture.com.",
   "author": "Jon Reiling <jreiling@gmail.com> (http://jonreiling.com/)",
