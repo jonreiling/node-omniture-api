@@ -52,8 +52,6 @@ Most likely, you'll use this library to run reports and pull traffic numbers for
 
 Use fetchReport if you already have the ID of a report that has already been queued. This function will recursively call itself until the report is ready.
 
-callback is passed a `success` boolean and a `data` JSON object.
-
 #### makeRequest( endpoint , data , callback )
 
 Make a general request to the Omniture API using an arbitrary endpoint (e.g. `'Report.Get'`). Learn more about the specifics of what you can call over at the [API Explorer](https://marketing.adobe.com/developer/api-explorer).
