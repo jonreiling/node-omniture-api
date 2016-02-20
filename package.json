@@ -1,0 +1,30 @@
+{
+  "name": "Node-Omniture-API",
+  "version": "0.1.0",
+  "description": "An extremely simple library for making calls to api.omniture.com.",
+  "author": "Jon Reiling <jreiling@gmail.com> (http://jonreiling.com/)",
+  "tags": [
+    "omniture"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/brentertz/scapegoat/blob/master/LICENSE-MIT"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonreiling/node-omniture-api.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main":"index.js",
+  "dependencies": {
+    "md5":"latest",
+    "sha1":"latest"
+  },
+  "bugs": {
+    "url": "https://github.com/jonreiling/node-omniture-api/issues"
+  }  
+}
