@@ -1,5 +1,5 @@
 # node-omniture-api
-An extremely simple library for making calls to api.omniture.com.
+An extremely simple library for making calls to api.omniture.com (v1.4).
 
 ## Installation
 
