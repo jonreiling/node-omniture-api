@@ -10,7 +10,7 @@ npm install node-omniture-api --save
 ## Usage
 
 ```node
-var OmnitureAPI = new require('node-omniture-api')
+var OmnitureAPI = require('node-omniture-api')
 var omniture = new OmnitureAPI(%USER_NAME%,%SHARED_SECRET%);
  
 //Basic request to fetch page views
