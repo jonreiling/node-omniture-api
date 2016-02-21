@@ -60,11 +60,10 @@ OmnitureAPI.prototype.fetchReport = function(reportId,callback) {
 
 OmnitureAPI.prototype.makeRequest = function(endpoint,data,callback) {
 
+	//Create info used for header authentication
 	var date = new Date();
 	var nonce = md5(Math.random());
-	var nonce_ts = date.toISOString();
-	nonce_ts = nonce_ts.replace(/(\.\d\d\dZ)/ ,'Z');
-
+	var nonce_ts = date.toISOString().replace(/(\.\d\d\dZ)/ ,'Z');;
 	var digest = (new Buffer(sha1(nonce + nonce_ts + this.sharedSecret)).toString('base64'));
 	
 	var cmd = 'curl -H \'X-WSSE: UsernameToken Username="'+this.userName+'", PasswordDigest="'+digest+'", Nonce="'+nonce+'", Created="'+nonce_ts+'"\' --data \''+JSON.stringify(data)+'\' https://api.omniture.com/admin/1.4/rest/?method='+endpoint;
