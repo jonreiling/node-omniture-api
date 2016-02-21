@@ -1,6 +1,8 @@
 # node-omniture-api
 An extremely simple library for making calls to api.omniture.com (v1.4).
 
+For a fuller set of features, check out the excellent [nomniture package](https://github.com/imartingraham/nomniture).
+
 ## Installation
 
 ```
