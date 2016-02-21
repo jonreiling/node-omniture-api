@@ -60,7 +60,7 @@ OmnitureAPI.prototype.fetchReport = function(reportId,callback) {
 
 OmnitureAPI.prototype.makeRequest = function(endpoint,data,callback) {
 
-	//Create info used for header authentication
+	//Create info used for header authentication.
 	var date = new Date();
 	var nonce = md5(Math.random());
 	var nonce_ts = date.toISOString().replace(/(\.\d\d\dZ)/ ,'Z');;
