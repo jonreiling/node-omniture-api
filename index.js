@@ -2,7 +2,9 @@
 
 var sha1 = require('sha1')
   , md5 = require('md5')
-  , exec = require('child_process').exec;
+  , exec = require('child_process').exec
+  , request = require('request')
+  , util = require('util');
 
 function OmnitureAPI( userName, sharedSecret ) {
 	this.userName = userName;
@@ -66,30 +68,28 @@ OmnitureAPI.prototype.makeRequest = function(endpoint,data,callback) {
 	var nonce_ts = date.toISOString().replace(/(\.\d\d\dZ)/ ,'Z');;
 	var digest = (new Buffer(sha1(nonce + nonce_ts + this.sharedSecret)).toString('base64'));
 	
-	var cmd = 'curl -H \'X-WSSE: UsernameToken Username="'+this.userName+'", PasswordDigest="'+digest+'", Nonce="'+nonce+'", Created="'+nonce_ts+'"\' --data \''+JSON.stringify(data)+'\' https://api.omniture.com/admin/1.4/rest/?method='+endpoint;
+	var requestOptions = {
+		url: 'https://api.omniture.com/admin/1.4/rest/?method='+endpoint,
+		method: 'POST',
+		//Headers required a bit of a hack. Special thanks to https://github.com/imartingraham/nomniture/blob/master/lib/client.js
+		headers: {
+		        "X-WSSE": "UsernameToken Username=\""+this.userName+"\", "+
+									"PasswordDigest=\""+digest+"\", "+
+									"Nonce=\""+nonce+"\", "+
+									"Created=\""+nonce_ts+"\""
+		},
+		form:data
+	}
 
-	exec(cmd, function(error, stdout, stderr) {
+	request(requestOptions, function(error,response,body) {
 
-		if (!error) {
-		
-			var response = JSON.parse(stdout);
+  	  if (!error) {
+  	  	callback((response.statusCode==200) ,JSON.parse(body));
+  	  } else {
+  	  	callback(false,error);
+  	  }
 
-			if ( response.error ) {
-		
-				callback(false,response);
-		
-			} else {
-		
-				callback(true,response);
-		
-			}
-		
-		} else {
-
-			callback(false,{ error: 'curl_command', error_description: 'Error executing CURL command.'});
-		
-		}
-	});	
+	});
 }
 
 module.exports = OmnitureAPI

@@ -1,6 +1,6 @@
 {
   "name": "node-omniture-api",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "An extremely simple library for making calls to api.omniture.com.",
   "author": "Jon Reiling <jreiling@gmail.com> (http://jonreiling.com/)",
   "tags": [
@@ -22,7 +22,8 @@
   "main":"index.js",
   "dependencies": {
     "md5":"latest",
-    "sha1":"latest"
+    "sha1":"latest",
+    "request":"latest"
   },
   "bugs": {
     "url": "https://github.com/jonreiling/node-omniture-api/issues"
